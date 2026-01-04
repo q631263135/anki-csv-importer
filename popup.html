@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anki CSV Importer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📥 导入到 Anki</h1>
+    </header>
+
+    <!-- 文件上传区域 -->
+    <section class="file-section">
+      <h2>文件</h2>
+      
+      <!-- 添加选项卡 -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="paste">粘贴文本</button>
+        <button class="tab-btn" data-tab="file">选择文件</button>
+      </div>
+
+      <!-- 粘贴文本区域 -->
+      <div id="pasteTab" class="tab-content active">
+        <textarea 
+          id="csvText" 
+          placeholder="在此粘贴CSV内容...&#10;&#10;例如：&#10;topic,front,back,extra&#10;VSCode,如何比较文件,使用Ctrl+Shift+P,推荐安装GitLens"
+          rows="8"
+        ></textarea>
+        <button id="parseBtn" class="btn-secondary">解析CSV</button>
+      </div>
+
+      <!-- 文件选择区域 -->
+      <div id="fileTab" class="tab-content">
+        <div class="file-input-wrapper">
+          <label for="csvFile" class="file-label">
+            <span>选择CSV文件</span>
+            <input type="file" id="csvFile" accept=".csv" />
+          </label>
+          <span id="fileName" class="file-name">未选择文件</span>
+        </div>
+      </div>
+      
+      <div class="option-row">
+        <label>字段分隔符</label>
+        <select id="delimiter">
+          <option value=",">逗号</option>
+          <option value="\t">制表符</option>
+          <option value=";">分号</option>
+          <option value="|">竖线</option>
+        </select>
+      </div>
+
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="allowHtml" checked />
+          允许在字段中使用HTML
+        </label>
+      </div>
+
+      <!-- 预览表格 -->
+      <div id="preview" class="preview-section" style="display: none;">
+        <h3>预览 (显示前5行)</h3>
+        <div class="table-wrapper">
+          <table id="previewTable"></table>
+        </div>
+        <div class="preview-info">
+          共 <strong id="totalRows">0</strong> 行数据
+        </div>
+      </div>
+    </section>
+
+    <!-- 导入选项 -->
+    <section class="import-section">
+      <h2>导入选项</h2>
+      
+      <div class="option-row">
+        <label>笔记模板</label>
+        <select id="noteType">
+          <option value="">加载中...</option>
+        </select>
+      </div>
+
+      <div class="option-row">
+        <label>牌组</label>
+        <select id="deck">
+          <option value="">加载中...</option>
+        </select>
+      </div>
+
+      <div class="option-row">
+        <label>现有笔记</label>
+        <select id="duplicatePolicy">
+          <option value="update" selected>更新</option>
+          <option value="skip">跳过</option>
+          <option value="duplicate">创建副本</option>
+        </select>
+      </div>
+
+      <div class="option-row">
+        <label>标记所有笔记</label>
+        <input type="text" id="tagAll" placeholder="输入标签(可选)" />
+      </div>
+
+      <div class="option-row">
+        <label>标记已更新的笔记</label>
+        <input type="text" id="tagUpdated" placeholder="输入标签(可选)" />
+      </div>
+    </section>
+
+    <!-- 字段匹配 -->
+    <section class="mapping-section">
+      <h2>字段匹配</h2>
+      <div class="mapping-info">
+        <span>将CSV列映射到 <strong id="currentModel">模板</strong> 的字段</span>
+      </div>
+      <div id="fieldMappings" class="field-mappings">
+        <div class="no-fields-message">请先选择笔记模板并解析CSV数据</div>
+      </div>
+    </section>
+
+    <!-- 操作按钮 -->
+    <section class="action-section">
+      <button id="importBtn" class="btn-primary" disabled>
+        导入到 Anki
+      </button>
+      <div id="status" class="status-message"></div>
+      <div id="progress" class="progress-bar" style="display: none;">
+        <div id="progressFill" class="progress-fill"></div>
+        <span id="progressText" class="progress-text">0%</span>
+      </div>
+    </section>
+
+    <!-- AnkiConnect 设置 -->
+    <section class="settings-section">
+      <details>
+        <summary>AnkiConnect 设置</summary>
+        <div class="option-row">
+          <label>AnkiConnect URL</label>
+          <input type="text" id="ankiUrl" value="http://localhost:8765" />
+        </div>
+        <button id="testConnection" class="btn-secondary">测试连接</button>
+      </details>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
