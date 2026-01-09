@@ -265,7 +265,7 @@ class AnkiImporter {
             // 尝试选择包含自定义字段的模板
             const customModel = models.find(m =>
                 m.toLowerCase().includes('custom') ||
-                m.toLowerCase().includes('basic')
+                m.toLowerCase().includes('baisc')
             );
             if (customModel) {
                 this.elements.noteType.value = customModel;

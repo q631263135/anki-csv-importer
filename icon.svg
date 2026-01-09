@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect x="0" y="0" width="128" height="128" rx="16" fill="#5cb85c" />
+  
+  <!-- CSV文件图标 -->
+  <rect x="24" y="24" width="48" height="64" rx="4" fill="#ffffff" />
+  <text x="32" y="56" font-family="Arial" font-weight="bold" font-size="16" fill="#5cb85c">CSV</text>
+  <line x1="32" y1="64" x2="64" y2="64" stroke="#5cb85c" stroke-width="2" />
+  <line x1="32" y1="72" x2="64" y2="72" stroke="#5cb85c" stroke-width="2" />
+  
+  <!-- 箭头 -->
+  <path d="M76 56 L88 56 L88 48 L104 64 L88 80 L88 72 L76 72 Z" fill="#ffffff" />
+  
+  <!-- Anki卡片图标 -->
+  <rect x="72" y="24" width="32" height="48" rx="4" fill="#ffffff" stroke="#ffffff" stroke-width="2" />
+  <rect x="76" y="28" width="24" height="16" rx="2" fill="#5cb85c" />
+  <rect x="76" y="48" width="24" height="8" rx="2" fill="#5cb85c" opacity="0.7" />
+  <rect x="76" y="60" width="24" height="8" rx="2" fill="#5cb85c" opacity="0.7" />
+  
+  <!-- 文本标签 -->
+  <text x="64" y="104" font-family="Arial" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle">CSV to Anki</text>
+</svg>

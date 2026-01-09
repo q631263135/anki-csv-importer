@@ -12,7 +12,13 @@
     "http://localhost:8765/*"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_title": "Anki CSV Importer",
+    "default_popup": "popup.html",
+    "default_icons": {
+      "32": "icons/anki32.png",
+      "48": "icons/anki48.png",
+      "128": "icons/anki128.png"
+    }
   },
   "background": {
     "service_worker": "background.js"
@@ -22,5 +28,10 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "32": "icons/anki32.png",
+    "48": "icons/anki48.png",
+    "128": "icons/anki128.png"
+  }
 }
