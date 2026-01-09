@@ -1,4 +1,6 @@
 > chrome插件，将AI生成csv格式的卡片，导入Anki
+> <img width="347" height="662" alt="image" src="https://github.com/user-attachments/assets/429f1a3e-3bee-4eac-8a63-b35860bac1dc" />
+
 # 转换csv内容，类Anki导入界面插件
 
 这是一个用于转换CSV内容的插件，模仿Anki导入界面的功能。
